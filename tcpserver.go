@@ -119,8 +119,8 @@ func (s *Server) Serve() error {
 			return err
 		}
 
+		s.wg.Add(1)
 		go func(c net.Conn) {
-			s.wg.Add(1)
 			defer s.wg.Done()
 
 			s.serve(c)
